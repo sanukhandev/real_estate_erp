@@ -51,7 +51,7 @@ class Property extends Model
     }
     public function amenities(): BelongsToMany
     {
-        return $this->belongsToMany(Amenity::class, 'property_amenity');
+        return $this->belongsToMany(PropertyAmenity::class, 'property_amenity');
     }
 
     public function attributes(): MorphMany
