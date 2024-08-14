@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Attribute extends Model
+{
+    use HasFactory;
+
+    use HasFactory;
+
+    protected $fillable = [
+        'tenant_id',
+        'name',
+        'attribute_type',
+        'module',
+        'default_value', // Add default_value to fillable attributes
+    ];
+
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function values(): HasMany
+    {
+        return $this->hasMany(AttributeValue::class);
+    }
+}
